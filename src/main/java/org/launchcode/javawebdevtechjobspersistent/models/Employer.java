@@ -3,13 +3,15 @@ package org.launchcode.javawebdevtechjobspersistent.models;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Employer extends AbstractEntity {
 
     @NotBlank
-    @OneToOne(cascade = CascadeType.ALL)
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @Valid
     private String location;
 
     public Employer(){};
