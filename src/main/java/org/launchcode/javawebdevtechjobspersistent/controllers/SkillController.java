@@ -30,9 +30,10 @@ public class SkillController {
 
         if (errors.hasErrors()) {
             return "skills/add";
+        } else {
+            skillRepository.save(skill);
+            return "skills/view";
         }
-        skillRepository.save(skill);
-        return "skills/view";
     }
 
     @GetMapping("view/{skillId}")

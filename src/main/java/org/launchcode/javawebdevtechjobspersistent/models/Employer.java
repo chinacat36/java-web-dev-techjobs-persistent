@@ -1,18 +1,19 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.OneToOne;
-import javax.validation.Valid;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Employer extends AbstractEntity {
 
     @NotBlank
-//    @OneToOne(cascade = CascadeType.ALL)
-//    @Valid
     private String location;
+
+    @OneToMany
+    @JoinColumn
+    private List<Job> jobs = new ArrayList<>();
 
     public Employer(){};
 

@@ -10,25 +10,29 @@
 <form method="post" style="max-width:600px;">
     <div class="form-group">
         <label th:for="name">Name</label>
-        <input class="form-control" th:field="${job.name}" />
+        <input th:field="${job.name}" class="form-control"/>
         <span th:errors="${job.name}" class="error"></span>
     </div>
 
     <div class="form-group">
-        <label th:for="employer">Employer</label>
+        <label th:for="employers">Employer</label>
         <select name="employerId">
             <option th:each="employer : ${employers}"
                     th:text="${employer.name}"
-                    th:value="${employer.id}"></option>
+                    th:value="${employer.id}"
+                    th:field="${job.employer}"
+                    ></option>
         </select>
+        <span th:errors="${job.employer}" class="error"></span>
         <a th:href="@{'/employers/add'}">Add Employers</a>
     </div>
 
     <div class="form-group">
         <label th:for="skills">Skills</label>
         <th:block th:each="skill : ${skills}">
-            <input type="checkbox" name="skills" th:value="${skill.id}">
+            <input th:field="${job.skills}" type="checkbox" name="skills" th:value="${skill.id}">
             <label th:text="${skill.name}"></label>
+            <span th:errors="${job.skills}" class="error"></span>
         </th:block>
         <a th:href="@{'/skills/add'}">Add Skills</a>
     </div>
