@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns="http://www.w3.org/1999/html">
+<head th:replace="fragments :: head"></head>
+
+<body class="container  body-content">
+<h1>All Skills</h1>
+
+<nav th:replace="fragments :: page-header"></nav>
+
+<div>
+    <li th:each="skill : ${skills}">
+        <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
+    </li>
+</div>
+<hr>
+<div>
+    <h2></h2> <a th:href="@{/skills/add}">Add Employer</a>
+    </h2>
+
+</div>
+
+</body>
+</html>

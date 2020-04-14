@@ -29,11 +29,12 @@ public class EmployerController {
     public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
                                     Errors errors, Model model) {
 
+        model.addAttribute("employers", employerRepository.findAll());
         if (errors.hasErrors()) {
             return "employers/add";
         }
         employerRepository.save(newEmployer);
-        return "employers/view";
+        return "employers/list";
     }
 
     @GetMapping("view/{employerId}")
