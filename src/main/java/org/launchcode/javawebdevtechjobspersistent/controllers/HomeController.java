@@ -49,13 +49,14 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-                                     Errors errors, Model model, @RequestParam int employerId,
-                                    @RequestParam List<Integer> skills) {
+                                     Errors errors, Model model, @RequestParam Integer employerId,
+                                    @RequestParam(required = false) List<Integer> skills) {
 
-        if (errors.hasErrors()) {
+        model.addAttribute("employers", employerRepository.findAll());
+        model.addAttribute("skills", skillRepository.findAll());
+
+        if (errors.hasErrors() || (employerId == null || skills == null)) {
             model.addAttribute("title", "Add Job");
-            model.addAttribute("employers", employerRepository.findAll());
-            model.addAttribute("skills", skillRepository.findAll());
             return "add";
         } else {
             Optional<Employer> empResults = employerRepository.findById(employerId);

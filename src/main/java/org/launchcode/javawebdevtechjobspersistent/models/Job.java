@@ -1,6 +1,7 @@
 package org.launchcode.javawebdevtechjobspersistent.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,10 +17,10 @@ public class Job extends AbstractEntity{
     public Job() {
     }
 
-    public Job(Employer anEmployer, List<Skill> aSkills) {
+    public Job(Employer anEmployer, List aSkill) {
         super();
         this.employer = anEmployer;
-        this.skills = aSkills;
+        this.skills = aSkill;
     }
 
     // Getters and setters.
